@@ -1,0 +1,104 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-04-04T21:30:20.384Z",
+    "end": "2025-04-04T21:30:25.535Z",
+    "duration": 5151,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "3dbb8364-88ca-483c-b1db-66f3d8bb7dae",
+      "title": "",
+      "fullFile": "cypress\\e2e\\cypresTest.cy.ts",
+      "file": "cypress\\e2e\\cypresTest.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b42ceebd-a215-4826-8993-5f53cff7d627",
+          "title": "Change Assignee and Status of a Ticket",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should change assignee and status of a ticket",
+              "fullTitle": "Change Assignee and Status of a Ticket should change assignee and status of a ticket",
+              "timedOut": null,
+              "duration": 5120,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/');\n// Open a specific issue by clicking on it (assume issue ID or summary exists)\ncy.contains('Who is the author of Angular Jira clone').click();\n// Change assignee\ncy.get('[data-cy=\"backlog\"]').click();\ncy.get('[data-cy=assignee-option-JohnDoe]').click(); // Replace with your option value\ncy.get('[data-cy=assignee-select]').should('contain', 'John Doe');\n// Change status\ncy.get('[data-cy=status-dropdown]').click();\ncy.get('[data-cy=status-option-in-progress]').click(); // Replace as needed\ncy.get('[data-cy=status-dropdown]').should('contain', 'In Progress');\n// Save changes (if necessary)\ncy.get('[data-cy=save-issue-button]').click();\n// Assert changes\ncy.get('[data-cy=assignee-display]').should('contain', 'John Doe');\ncy.get('[data-cy=status-display]').should('contain', 'In Progress');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `[data-cy=\"backlog\"]`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `[data-cy=\"backlog\"]`, but never found it.\n    at Context.eval (webpack:///./cypress/e2e/cypresTest.cy.ts:11:7)",
+                "diff": null
+              },
+              "uuid": "dda3db81-f2ca-46b7-934d-a2be2d63dd5e",
+              "parentUUID": "b42ceebd-a215-4826-8993-5f53cff7d627",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "dda3db81-f2ca-46b7-934d-a2be2d63dd5e"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 5120,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
