@@ -30,7 +30,7 @@ jobs:
           npx cypress run --reporter mochawesome
 
       - name: Upload Mochawesome Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: mochawesome-report
           path: cypress/reports
