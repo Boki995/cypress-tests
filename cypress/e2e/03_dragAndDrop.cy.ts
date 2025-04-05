@@ -24,15 +24,15 @@ describe('Drag and Drop Ticket', () => {
       // Perform the drag-and-drop action
       cy.get('@ticket').drag('@destinationColumn', { force: true });
   
-      /*
+      //Verify if ticket is in new column
       cy.get('@destinationColumn')
         .contains('Task-9631')
         .should('exist');
   
-      // Optionally, verify the ticket has been removed from the original column
+      // Verify the ticket has been removed from the original column
       cy.get('@sourceColumn')
         .should('not.contain', 'Task-9631');
-*/
+
         });
   });
   
