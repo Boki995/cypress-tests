@@ -29,6 +29,11 @@ jobs:
         run: |
           npx cypress run --reporter mochawesome
 
+      - name: Check if reports directory exists
+        run: |
+          ls -l cypress/reports || echo "Reports directory does not exist"
+          ls -l cypress/videos || echo "Videos directory does not exist"
+
       - name: Upload Mochawesome Report
         uses: actions/upload-artifact@v2
         with:
