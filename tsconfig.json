@@ -8,7 +8,8 @@
       "moduleResolution": "node",
       "strict": true,
       "skipLibCheck": true,
-       "outDir": "dist"
+       "outDir": "dist",
+       "typeRoots": ["node_modules/@types", "node_modules/cypress"]
     },
     "include": ["cypress/**/*.ts",
         "cypress/support/**/*.ts"],
