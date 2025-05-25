@@ -1,8 +1,9 @@
 pipeline {
-    agent any
-
-    tools {
-        nodejs 'Node 18' // Make sure "Node 18" is configured in Global Tool Configuration
+    agent {
+        docker {
+            image 'cypress/browsers:node-18.18.0-chrome-120' // Use version that fits your Cypress/browser needs
+            args '-u root' // Run as root to avoid permission issues
+        }
     }
 
     stages {
@@ -14,7 +15,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm ci' // or 'npm install' if package-lock.json is missing
+                sh 'npm ci'
             }
         }
 
@@ -27,7 +28,7 @@ pipeline {
 
     post {
         always {
-            // Only works if using mocha-junit-reporter configured in cypress.config.js
+            // Optional: if you enable JUnit reporter in Cypress
             junit 'cypress/results/*.xml'
         }
     }
