@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3.9.0' // Define in "Global Tool Configuration"
+        nodejs 'Node 18' // Make sure "Node 18" is configured in Global Tool Configuration
     }
 
     stages {
@@ -11,21 +11,24 @@ pipeline {
                 git url: 'https://github.com/Boki995/cypress-tests.git', branch: 'master'
             }
         }
-        stage('Build') {
+
+        stage('Install Dependencies') {
             steps {
-                sh 'mvn clean install'
+                sh 'npm ci' // or 'npm install' if package-lock.json is missing
             }
         }
-        stage('Test') {
+
+        stage('Run Cypress Tests') {
             steps {
-                sh 'mvn test'
+                sh 'npx cypress run'
             }
         }
     }
 
     post {
         always {
-            junit '**/target/surefire-reports/*.xml'
+            // Only works if using mocha-junit-reporter configured in cypress.config.js
+            junit 'cypress/results/*.xml'
         }
     }
 }
